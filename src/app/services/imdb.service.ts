@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ImdbMovieModel } from './imdb-Movie.model';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +13,12 @@ export class ImdbService {
   
   baseUrlPoster: string = `https://imdb-api.com/en/API/Posters/${this.apiKey}/`;
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) {}
+
+  getData(): Observable<ImdbMovieModel[]> {
+    return this.httpClient.get<ImdbMovieModel[]>(this.baseUrl);
+  }
 
 }
+
+// concluído até criando o service
