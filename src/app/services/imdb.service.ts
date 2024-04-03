@@ -18,6 +18,9 @@ export class ImdbService {
   getData(): Observable<ImdbMovieModel[]> {
     return this.httpClient.get<ImdbMovieModel[]>(this.baseUrl);
   }
+  getPosters(id: string): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrlPoster + id);
+  }
 
 }
 
